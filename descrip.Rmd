@@ -1,0 +1,99 @@
+---
+title: "Análisis descriptivo univariado"
+subtitle: "Estadística I  \nTecnicatura Superior en Análisis del Delito  \nInstituto de Seguridad Pública  \nProvincia de Santa Fe"
+author: "Docentes: Maite San Martín y Patricia Ciccioli"
+date: "Septiembre 2021"
+output:
+  html_document:
+    highlight: tango
+    theme: united
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introducción
+
+Uno de los objetivos principales del análisis del delito es convertir el torrente de datos que se generan de forma constante en las distintas fuentes (Central de Atención a la Emergencia 911, partes e intervenciones policiales sistematizadas en ACRIM, etc.) en información valiosa, para ser empleada en la toma de decisiones, caracterización de patrones, predicción de resultados, identificación de fuentes de variabilidad, detección de anomalías, etc. Estos conjuntos de datos deben ser procesados y depurados, organizados de alguna forma estructurada, para poder ser sometidos a los análisis que produzcan los resultados buscados. Finalmente, dichos resultados deben ser comunicados eficazmente para que se pueda accionar sobre la información producida.
+
+Este documento se enfocará en el análisis descriptivo de características univariadas, haciendo una breve pasada por lo que podría ser un análisis de consistencia inicial básico. Se enfocará en el uso del software R a través de su interfaz RStudio, dado que es una plataforma específica para el análisis estadístico y la representación gráfica. Además se harán algunas menciones también al análisis que puede hacerse en planillas de cálculo (tipo Microsoft Excel, Libre Office, Google Drive), dado que aunque no se traten de soportes informáticos específicos para esta temática, también brindan algunas herramientas que nos pueden ser útiles. 
+
+# Datos a trabajar
+
+Para el abordaje de esta unidad, trabajaremos con un conjunto de datos simulados, es decir, creados artificialmente mediante la computadora en base a ciertas características que elegimos. Se trata de un conjunto de datos que imita información sobre robos cometidos a viviendas durante el año 2020 en la provincia de Santa Fe. El archivo que contiene estos datos es `robos.xlsx`, y cuenta con las siguientes características:
+
+```{r echo=F}
+vbles <- t(rbind(
+  c("ID", "mes", "tipo", "dinero", "imputados", "agres", "psic", "prov"),
+  c("Número único de identificación del hecho.", 
+    "Mes en que ocurrió el robo, codificado con números enteros donde 1: Enero, ..., 12: Diciembre.", 
+    "Tipo de robo (Simple/calificado).", 
+    "Cantidad de dinero sustraída en el hecho (en $ argentinos).", 
+    "Cantidad de presuntos involucrados en el hecho.", 
+    "Nivel de agresividad ejercida en el hecho (Bajo/Medio/Alto)",
+    "Necesidad de asistencia psicológica al grupo familiar víctima del robo como consecuencia del hecho (Sí/No).", 
+    "Departamento en que ocurrió el hecho, codificado con números enteros donde 1: La Capital, ..., 19: Vera.")
+))
+
+knitr::kable(vbles, col.names = c("Variable", "Descripción"))
+```
+
+> **Para pensar...** 
+> (1) ¿Es factible recolectar toda esta información? ¿A qué fuente/s podríamos recurrir?
+> (2) ¿Qué tipo de variables son las mencionadas? ¿Qué tipo de análisis descriptivos podrían realizarse sobre cada una de ellas?
+
+
+# Primeros pasos con R
+
+En primer lugar, tenés que abrir RStudio. Esto lo podés hacer desde el programa instalado en tu computadora (si todavía no lo hiciste, podés recurrir al material disponible en el aula virtual con los links de descarga de `R` y `RStudio`) o bien podés hacerlo a través de <https://rstudio.cloud/>, que es algo así como un google Drive de `R`. Podés crear tu propia cuenta, asociándola a Google o GitHub si contás con una cuenta en alguna de estas plataformas o bien crearla desde cero como cualquier cuenta nueva en cualquier sitio. Una vez que abras la aplicación, debería verse así:
+
+```{r, echo=F, fig.align='center'}
+knitr::include_graphics("r_inicio.png")
+```
+
+Haciendo click en el primer ícono de la barra de herramientas `New file` o yendo a `File > New File > R Script` se abrirá un script de R: una especie de block de notas insertado en la interfaz de R donde vamos a escribir el código a ejecutar. Si bien el código de R se puede ejecutar directamente desde la consola, en general nos va a interesar guardar nuestros proyectos y el código ejecutado para poder replicarlo. Ahora ya tenemos listo el programa para ser usado.
+
+# Carga de datos
+
+Dado que R es un lenguaje de programación orientado a objetos, todo lo
+
+Para poder trabajar con un conjunto de datos, lo primero que necesitamos hacer es hacerlo disponible para el soporte informático que elegimos trabajar. Para eso, en primer lugar necesitamos identificar en qué formato está el conjunto de datos que necesitamos trabajar. Si bien en este caso trabajaremos con un archivo de tipo `.xlsx` (generado a partir de las versiones más nuevas de Microsoft Excel), `R` admite gran veriedad de formatos. Los más básicos y recomendables para grandes volúmenes de datos son los archivos `.csv` (*Comma Separated Values*) y archivos de texto plano tipo `.txt`. Asimismo, `R` permite cargar datos a su entorno de trabajo que estén nativamente en formatos provenientes de otros programas (SPSS, SAS, Stata). Si bien estos son los formatos que `RStudio` incluye en su interfaz de importación de datos, en [esta *cheatsheet*](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_data-import.pdf) (traducción del inglés de "machete", de los que usan lxs chicxs en las escuelas) pueden encontrar otros formatos y herramientas de importación de datos. 
+
+Entonces, desde el espacio de trabajo (bloque superior derecho en `RStudio`: 
+
+```{r, echo=F, fig.align='center', out.width="60%"}
+knitr::include_graphics("import.png")
+```
+
+Allí elegiremos la opción `From Excel...`, pero esto dependerá del tipo de archivo con el que necesitemos trabajar. Allí se desplegará una nueva ventana que se verá algo así:
+
+```{r, echo=F, fig.align='center'}
+knitr::include_graphics("import2.png")
+```
+
+En el primer campo que aparece debemos buscar la ubicación del archivo que queremos cargar en nuestra computadora. Si bien en este caso necesitamos que el archivo esté descargado en algún lugar de nuestro disco rígido, también pueden importarse de forma automática archivos que se encuentren disponibles en [internet](http://rstadistica.blogspot.com/2015/11/importar-desde-internet.html) o bien que se encuentren alojados en una [hoja de cálculo de Google Drive](https://www.doctormetrics.com/conectar-googlesheets-con-r/) (aunque estas formas exceden el presente curso, en internet hay mucho material al respecto, solo dejamos algunos links de ejemplo).
+
+Una vez que se seleccionó el archivo que se va a cargar, en el segundo espacio se visualizará cómo será cargado el conjunto de datos en función de las configuraciones que determinemos en el punto 3. Es como una vista previa de la importación.
+
+Dentro de las opciones de importación (tercer bloque) aparecen algunas variables que podemos modificar sobre la importación (el nombre que se le asignará al objeto que creemos)
+
+# Resumen básico
+
+# Descripción numérica
+
+## Aplicación: hojas de cálculo
+
+## Aplicación: RStudio
+
+# Descripción gráfica
+
+## Aplicación: hojas de cálculo
+
+## Aplicación: RStudio
+
+# Bibliografía
+
