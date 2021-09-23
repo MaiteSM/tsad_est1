@@ -1,0 +1,27 @@
+--- 
+title: "Introducción a la Programación"
+subtitle: "Guía de estudio - Lic. en Estadística - FCEyE - UNR"
+author: Mgs. Lic. Marcos Prunello (Prof. Tit. Ord.)
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+link-citations: yes
+# github-repo: maitesm/tsad_est1
+# url: https://maitesm.github.io/tsad_est1/
+description: "Esta guía resume los conceptos más importantes desarrollados en la asignatura Introducción a la Programación de la Licenciatura en Estadística (Facultad de Ciencias Económicas y Estadstica, Universidad Nacional de Rosario)."
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE, message = FALSE, 
+                      fig.align = "center")
+```
+
+<!-- 
+Inicialmetne no me andaba este estilo para el bookdown, dps de correr esto anduvo:
+remotes::install_github("rstudio/bslib")
+install.packages("downlit")
+remotes::install_github("rstudio/bookdown")
+Change the _output.yaml to the following:
+-->
