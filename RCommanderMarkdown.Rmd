@@ -1,0 +1,41 @@
+<!-- R Commander Markdown Template -->
+
+Replace with Main Title
+=======================
+
+### Your Name
+
+### `r as.character(Sys.Date())`
+
+```{r echo=FALSE}
+# include this code chunk as-is to set options
+knitr::opts_chunk$set(comment=NA, prompt=TRUE, out.width=750, fig.height=8, fig.width=8)
+library(Rcmdr)
+library(car)
+library(RcmdrMisc)
+```
+
+
+```{r}
+Robos <- readXL("d:/Datos User/Desktop/Datos esc/ISEP/tsad_est1/base_robos.xlsx", rownames=FALSE, 
+  header=TRUE, na="", sheet="base", stringsAsFactors=TRUE)
+```
+
+
+```{r}
+with(Robos, Barplot(tipo, xlab="tipo", ylab="Percent", scale="percent", label.bars=TRUE))
+```
+
+```{r}
+Robos$agres_f <- with(Robos, factor(agres, levels=c('Bajo','Medio','Alto'), ordered=TRUE))
+```
+
+
+```{r}
+with(Robos, Barplot(agres_f, xlab="Nivel de agresividad ejercida", ylab="Cantidad de Robos",
+main="Distribución de los robos según el nivel de agresividad ejercida en el hecho. Provincia de Santa Fe. Año 2020.",
+  
+label.bars=TRUE))
+```
+
+

@@ -1,0 +1,23 @@
+
+> with(Robos, piechart(tipo, xlab="", ylab="", 
++   main="Distribución de los robos a vivienda según tipo. Provincia de Santa Fe. Año 2020.", col=rainbow_hcl(2),
++    scale="percent"))
+
+> summary(Robos)
+       id             mes                 tipo         dinero       imputados       agres    
+ Min.   :  1.0   Min.   : 1.000   calificado:107   Min.   :   0   Min.   :1.000   Alto :101  
+ 1st Qu.:131.5   1st Qu.: 3.000   simple    :416   1st Qu.:2565   1st Qu.:1.000   Bajo :256  
+ Median :262.0   Median : 6.000                    Median :2964   Median :3.000   Medio:166  
+ Mean   :262.0   Mean   : 6.402                    Mean   :2840   Mean   :2.446              
+ 3rd Qu.:392.5   3rd Qu.:10.000                    3rd Qu.:3384   3rd Qu.:3.000              
+ Max.   :523.0   Max.   :12.000                    Max.   :4778   Max.   :4.000              
+                                                   NA's   :10                                
+ psic          dpto       
+ No:318   Min.   : 1.000  
+ Si:205   1st Qu.: 2.000  
+          Median : 3.000  
+          Mean   : 6.853  
+          3rd Qu.:13.000  
+          Max.   :19.000  
+                          
+
