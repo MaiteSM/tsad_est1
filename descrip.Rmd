@@ -10,6 +10,7 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
+    numbersections: true
 ---
 
 ```{r setup, include=FALSE}
@@ -106,13 +107,13 @@ Robos <- read_excel("base_robos.xlsx")
 
 Otro aspecto a tener en cuenta es que R es un lenguaje de programación que funciona a través de **paquetes**. Los paquetes son conjuntos de funciones específicas, que deben descargarse en la computadora la primera vez que queremos usarlos y deben "llamarse" cada vez que los necesitemos en una nueva sesión de R. Funcionan como las aplicaciones del celular: para poder usarlas tenemos que instalarlas una primera vez, y una vez que está instalada tenemos que abrirla para poder usarla. Y un dato más: así como es importante tener actualizadas las aplicaciones del celu para tener todas las funciones al día, lo mismo ocurre con los paquetes, que se van actualizando con el paso del tiempo, y con el mismo cerebro de R que también debe actualizarse de vez en cuando.
 
-Puede que la primera vez que querramos cargar un conjunto de datos desde un archivo Excel no podamos hacerlo por que no tenemos instalado el paquete `readxl`, que contiene la función necesaria para poder hacerlo. En la pestaña `Packages` del panel inferior derecho podemos instalar los paquetes deseados. Picamos la opción `Install` y allí en la ventana emergente que se habilita comenzamos a tipear el nombre del paquete deseado. Una vez que lo encontramos, procedemos a instalarlo. Cuando esto ocurra, probablemente aparezcan varias ventanas emergentes que se abren y cierran de forma veloz, esto es completamente normal mientras dure el proceso de instalación.
+Puede que la primera vez que querramos cargar un conjunto de datos desde un archivo Excel no podamos hacerlo porque no tenemos instalado el paquete `readxl`, que contiene la función necesaria para poder hacerlo. En la pestaña `Packages` del panel inferior derecho podemos instalar los paquetes deseados. Picamos la opción `Install` y allí en la ventana emergente que se habilita comenzamos a tipear el nombre del paquete deseado. Una vez que lo encontramos, procedemos a instalarlo. Cuando esto ocurra, probablemente aparezcan varias ventanas emergentes que se abren y cierran de forma veloz, esto es completamente normal mientras dure el proceso de instalación.
 
 ```{r, echo=F, fig.align='center', out.width="60%"}
 knitr::include_graphics("pack.png")
 ```
 
-```{r, echo=F, fig.align='center', out.width="50%"}
+```{r, echo=F, fig.align='center', out.width="40%"}
 knitr::include_graphics("pack2.png")
 ```
 
@@ -122,7 +123,7 @@ Asimismo, recuerden que en la web hay gran cantidad de material disponible y muc
 
 # Primeros pasos: R commander (RCmdr)
 
-Si bien R tiene una comunidad de usuarios muy activa (en el sitio <https://renrosario.rbind.io> pueden encontrar a la comunidad de usuarixs de R en Rosario), de las más diversas áreas, con muchos blogs, portales y encuentros en persona para recibir ayuda, al tratarse de un lenguaje de  programación, su  uso implica tener que aprender sentencias y códigos especiales para indicarle al software qué debe realizar. Esto puede ser desafiante, especialmente si no se tiene experiencia previa en el mundo de la programación.
+Si bien R tiene una comunidad de usuarios muy activa (en el sitio <https://renrosario.rbind.io> pueden encontrar a la comunidad de usuarixs de R en Rosario y algunos de los talleres realizados), de las más diversas áreas, con muchos blogs, portales y encuentros en persona para recibir ayuda, al tratarse de un lenguaje de  programación, su  uso implica tener que aprender sentencias y códigos especiales para indicarle al software qué debe realizar. Esto puede ser desafiante, especialmente si no se tiene experiencia previa en el mundo de la programación.
 
 **R Commander** existe para poder usar R sin tener que aprender programación. Se trata de una interfaz  gráfica que permite realizar algunas tareas en base a  menúes y ventanas, como suele hacerse en muchos otros softwares con licencia paga. Esto significa que, a pesar de tener algunas limitaciones, podemos usar R reemplazando las sentencias de programación por ventanas y opciones que podemos elegir con el mouse.
 
@@ -132,7 +133,7 @@ Para poder usar R Commander debemos instalarlo. Dado que se trata de un paquete,
 knitr::include_graphics("rcmdr1.png")
 ```
 
-Una vez escrito esto, hacemos *enter*. R comenzará a "pensar" e irá escribiendo algunas cosas en rojo en la ventana de la consola. Ello indica que está cargando los paquetes necesarios para poder ejecutar el R Commander, ya que esta interfaz gráfica hace uso de otros paquetes y procedimientos por lo que al usarlo se habilitan éstos también. Finalmente, se abrirá una ventana emergente como la que sigue:
+Una vez escrito esto, hacemos *enter*. R comenzará a "pensar" e irá escribiendo algunas cosas en rojo en la ventana de la consola. Ello indica que está cargando los paquetes necesarios para poder ejecutar R Commander, ya que esta interfaz gráfica hace uso de otros paquetes y procedimientos por lo que al usarlo se habilitan éstos también. Finalmente, se abrirá una ventana emergente como la que sigue:
 
 ```{r, echo=F, fig.align='center', out.width="100%"}
 knitr::include_graphics("rcmdr2.png")
@@ -142,7 +143,7 @@ Tal como indicamos en el apartado de **Paquetes**, el proceso de instalación se
 
 ## Componentes de R Commander
 
-En la ventana de R Commander se pueden distinguir 4 partes:
+En la ventana completa de R Commander se pueden distinguir 4 partes:
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr3.png")
@@ -156,7 +157,7 @@ knitr::include_graphics("rcmdr3.png")
 
 * 4) El sector de Mensajes. Sirve para que R Commander informe sobre cualquier aspecto, especialmente sobre errores cometidos.
 
-Algunas veces, los apartados 3) y 4) no aparecen, y solo se puede ver la barra de arriba con el menú de opciones y el RScript. En estos casos, tanto el código como los avisos se visualizan en la consola de RStudio (esta es la opción por defecto dado que estamos utilizando RStudio, cosa que no ocurriría si estuviésemos usando directamente R desde su propia interfaz). Para cambiar esta configuración y que todo pueda verse desde la ventana de R Commander, vamos a Herramientas > Opciones, y en la pestaña Salida destildamos la opción "Enviar la salida a la consola de R" y tenemos que asegurarnos que la ventana de salida tenga un alto (en líneas) superior a 0; clickeamos Reiniciar R Commander.
+Algunas veces, los paneles señalados como 3) y 4) no aparecen, y solo se puede ver la barra de arriba con el menú de opciones y el RScript. En estos casos, tanto el código como los avisos se visualizan en la consola de RStudio (esta es la opción por defecto dado que estamos utilizando RStudio, cosa que no ocurriría si estuviésemos usando directamente R desde su propia interfaz). Para cambiar esta configuración y que todo pueda verse desde la ventana de R Commander, vamos a `Herramientas > Opciones`, y en la pestaña `Salida` destildamos la opción "Enviar la salida a la consola de R" y tenemos que asegurarnos que la ventana de salida tenga un alto (en líneas) superior a 0; clickeamos `Reiniciar R Commander`.
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr26.png")
@@ -164,7 +165,7 @@ knitr::include_graphics("rcmdr26.png")
 
 ## Lectura de datos
 
-Para poder realizar gráficos y resu´menes numéricos, debemos primero importar o abrir en R Commnader el archivo que contenga los datos que queremos analizar. Si bien los datos pueden estar guardados en distintos tipos de archivos y formatos, vamos a considerar un ejemplo en el que los mismos fueron guardados en una planilla de Excel. El archivo de Excel que vamos a utilizar es una base de datos simulada llamada robos.xlsx 
+Para poder realizar gráficos y resúmenes numéricos, debemos primero importar o abrir en R Commander el archivo que contenga los datos que queremos analizar. Si bien los datos pueden estar guardados en distintos tipos de archivos y formatos, vamos a considerar un ejemplo en el que los mismos fueron guardados en una planilla de Excel. El archivo de Excel que vamos a utilizar es la base de datos simulada descrita al comienzo de este documento, llamada `base_robos.xlsx`. 
 
 La siguiente figura muestra esta planilla de datos en Excel:
 
@@ -172,7 +173,7 @@ La siguiente figura muestra esta planilla de datos en Excel:
 knitr::include_graphics("rcmdr4.png")
 ```
 
-Este conjunto de datos se dice que está ordenado, ya que cada variable se encuentra en una columna y cada fila hace referencia a un caso o sujeto (en este caso el robo). Para leer este archivo de datos desde R Commander, se deben seguir los siguientes pasos:
+Este conjunto de datos se dice que está **ordenado**, ya que cada variable se encuentra en una columna y cada fila hace referencia a un caso o sujeto (en este caso, el hecho de robo). Para leer este archivo de datos desde R Commander, se deben seguir los siguientes pasos:
 
 * Ir a: Datos > Importar datos > desde un archivo de Excel...
 
@@ -180,7 +181,7 @@ Este conjunto de datos se dice que está ordenado, ya que cada variable se encue
 knitr::include_graphics("rcmdr5.png")
 ```
 
-* En la ventana Importar un  conjunto  de  datos  Excel, podemos elegir el nombre con el cual vamos a identificar al conjunto de datos que vamos a importar. Dicho de otro modo, elegimos el nombre que queremos para el nuevo objeto de R que estamos creando, que contiene todos nuestros datos. Se puede dejar el que aparece por default (Dataset) o elegir cualquier otro. En este caso tipeamos Robos.
+* En la ventana Importar un  conjunto  de  datos  Excel, podemos elegir el nombre con el cual vamos a identificar al conjunto de datos que vamos a importar. Dicho de otro modo, elegimos el nombre que queremos para el nuevo objeto de R que estamos creando, que contiene todos nuestros datos. Se puede dejar el que aparece por defecto (*Dataset*) o elegir cualquier otro. En este caso tipeamos `Robos`.
 
 ```{r, echo=F, fig.align='center', out.width="50%"}
 knitr::include_graphics("rcmdr6.png")
@@ -188,26 +189,32 @@ knitr::include_graphics("rcmdr6.png")
 
 * Al hacer click en *Aceptar*, se abrirá un explorador de archivos para que busquemos y seleccionemos el archivo `base_robos.xlsx` dentro de nuestra computadora.
 
-* Luego de hacer click en Abrir, tanto en el sector de código como en el de resultados aparecerán las sentencias de programación que el programa evaluó para realizar la importación. Las mismas no son de nuestro interés, pero podemos verificar que la lectura fue exitosa si aparece el nombre elegido (Robos) al lado de Conjunto de datos: en la parte superior. Además, si hacemos click sobre Visualizar conjunto de datos, se abrirá una nueva ventana que nos permite ver el conjunto de datos:
+* Luego de hacer click en *Abrir*, tanto en el sector de código como en el de resultados aparecerán las sentencias de programación que el programa evaluó para realizar la importación. Las mismas no son de nuestro interés, pero podemos verificar que la lectura fue exitosa si aparece el nombre elegido (Robos) al lado de Conjunto de datos: en la parte superior. Además, si hacemos click sobre Visualizar conjunto de datos, se abrirá una nueva ventana que nos permite ver el conjunto de datos que acabamos de cargar:
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr7.png")
 ```
 
+Si antes de abrir R Commander ya habíamos importado el archivo de interés según lo indicado en el punto *Carga de datos*, solo basta con clickear en el texto en rojo `<No hay conjunto de datos activo>`, para que se abra una ventana emergente que nos muestra todos los objetos disponibles en nuestro ambiente de trabajo de R (en este caso, solo encontrará el objeo Robos que contiene a nuestra base de datos).
+
+```{r, echo=F, fig.align='center', out.width="70%"}
+knitr::include_graphics("rcmdr37.png")
+```
+
 ## Gráficos
 
-En R Commander, los gráficos disponibles se encuentran en el menú Gráficas. Entre ellos están el histograma, el gráfico de bastones, el diagrama de cajas (boxplot), el gráfico de barras y el gráfico de sectores. 
+En R Commander, los gráficos disponibles se encuentran en el menú `Gráficas.` Entre ellos están el histograma, el gráfico de bastones, el diagrama de cajas (boxplot), el gráfico de barras y el gráfico de sectores. 
 
 
 ### Gráfico de sectores
 
-Para realizar un diagrama de sectores mediante R commander elegiremos la opción Gráficas >  Gráfica de sectores. En la ventana emergente se selecciona una variable cualitativa, por ejemplo, *tipo*. Además, podemos escribir un título para el gráfico en el cuadro correspondiente.
+Para realizar un diagrama de sectores mediante R commander elegiremos la opción `Gráficas >  Gráfica de sectores`. En la ventana emergente se selecciona una variable cualitativa, por ejemplo, *tipo*. Además, podemos escribir un título para el gráfico en el cuadro correspondiente.
 
 ```{r, echo=F, fig.align='center', out.width="50%"}
 knitr::include_graphics("rcmdr8.png")
 ```
 
-Al hacer click en Aceptar, se abre una nueva ventana llamada R Graphics Device, en la cual se presentarán todos los gráficos que realicemos. En este caso, el resultado obtenido es:
+Al hacer click en Aceptar, se abre una nueva ventana llamada *R Graphics Device*, en la cual se presentarán todos los gráficos que realicemos. En este caso, el resultado obtenido es:
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr9.png")
@@ -215,13 +222,13 @@ knitr::include_graphics("rcmdr9.png")
 
 ### Gráfica de barras
 
-Para obtener un gráfico de barras se selecciona: Gráficas >  Gráfica de barras. En la pestaña Datos de la ventana que se abrió, seleccionar la variable cualitativa de interés, por ejemplo “agres”:
+Para obtener un gráfico de barras se selecciona: `Gráficas >  Gráfica de barras`. En la pestaña `Datos` de la ventana que se abrió, seleccionar la variable cualitativa de interés, por ejemplo *agres*:
 
 ```{r, echo=F, fig.align='center', out.width="50%"}
 knitr::include_graphics("rcmdr10.png")
 ```
 
-Dentro de la pestaña Opciones es posible configurar algunas cuestiones, por ejemplo, graficar las frecuencias absolutas o las relativas porcentuales, emplear barras subdivididas o agrupadas, definir los nombres de los ejes y el título del gráfico, etc. Para hacer un gráficos de barras simples, dejamos las opciones por defecto tal como aparecen y sólo modificamos los nombres de los ejes y el título:
+Dentro de la pestaña `Opciones` es posible configurar algunas cuestiones. Por ejemplo, si deseamos graficar las frecuencias absolutas o las relativas porcentuales, si queremos utilizar barras subdivididas o agrupadas (esto cobrará sentido en la próxima unidad, cuando abordemos el análisis descriptivo bivariado), podemos definir los nombres de los ejes y el título del gráfico, etc. Para hacer un gráficos de barras simples, dejamos las opciones por defecto tal como aparecen y sólo modificamos los nombres de los ejes y el título:
 
 ```{r, echo=F, fig.align='center', out.width="50%"}
 knitr::include_graphics("rcmdr11.png")
@@ -231,13 +238,13 @@ knitr::include_graphics("rcmdr11.png")
 knitr::include_graphics("rcmdr12.png")
 ```
 
-> *A tener cuidado*
+> **A tener cuidado**
 > ¿Les parece completamente correcto el gráfico que acabamos de construir?
 > Más adelante veremos cómo manipular los datos para que R los contemple de forma correcta.
 
 ### Gráfico de bastones
 
-Para realizar un gráfico de bastones de una variable discreta se selecciona Gráficas > Dibujar una variable numérica discreta y elegimos la variable que nos interesa, por ejemplo, imputados, en la pestaña Datos. En la pestaña Opciones se puede determinar la escala para el eje vertical (frecuencia absoluta o frecuencia relativa porcentual), los nombres para los ejes y el título.
+Para realizar un gráfico de bastones de una variable discreta se selecciona `Gráficas > Dibujar una variable numérica discreta` y elegimos la variable que nos interesa, por ejemplo, *imputados*, en la pestaña `Datos`. En la pestaña `Opciones` se puede determinar la escala para el eje vertical (frecuencia absoluta o frecuencia relativa porcentual), los nombres para los ejes y el título.
 
 ```{r, echo=F, fig.align='center', out.width="100%"}
 knitr::include_graphics("rcmdr13.png")
@@ -249,7 +256,7 @@ knitr::include_graphics("rcmdr14.png")
 
 ### Histograma 
 
-Para realizar un histograma de una variable cuantitativa continua (o una discreta con muchos valores distintos), vamos a Gráficas   >Histograma y elegimos la variable que nos interesa, por ejemplo, dinero, en la pestaña Datos. En la pestaña Opciones se puede determinar el nu´mero de intervalos o clases (en este caso dejamos por defecto el que ofrece el programa) y la escala para el eje vertical (frecuencia absoluta o frecuencia relativa porcentual).
+Para realizar un histograma de una variable cuantitativa continua (o una discreta con muchos valores distintos), vamos a `Gráficas > Histograma` y elegimos la variable que nos interesa, por ejemplo, *dinero*, en la pestaña `Datos`. En la pestaña `Opciones` se puede determinar el número de intervalos o clases (en este caso dejamos por defecto el que ofrece el programa) y la escala para el eje vertical (frecuencia absoluta o frecuencia relativa porcentual).
 
 ```{r, echo=F, fig.align='center', out.width="100%"}
 knitr::include_graphics("rcmdr15.png")
@@ -261,7 +268,7 @@ knitr::include_graphics("rcmdr16.png")
 
 ### Diagrama de caja (Boxplot)
 
-Para obtener un diagrama de caja o boxplot se debe ir a Gráficas >  Diagrama de caja. En la pestaña Datos de la nueva ventana elegimos la variable de interés, por ejemplo, Dinero. En la pestaña Opciones podemos elegir nombres de ejes y título del gráfico.
+Para obtener un diagrama de caja o boxplot se debe ir a `Gráficas > Diagrama de caja`. En la pestaña `Datos` de la nueva ventana elegimos la variable de interés, por ejemplo, *Dinero*. En la pestaña `Opciones` podemos elegir nombres de ejes y título del gráfico.
 
 ```{r, echo=F, fig.align='center', out.width="50%"}
 knitr::include_graphics("rcmdr17.png")
@@ -273,28 +280,27 @@ knitr::include_graphics("rcmdr18.png")
 
 ### Modificar paleta de colores
 
-R Commander nos permite modificar la paleta de colores de nuestro análisis de datos. Dentro del menú `Gráficas`, la primer opción es **Elegir la gama de colores**. Si clickeamos allí, se abrirá una ventana que muestra la actual paleta de colores y permitirá modificarla, eligiendo los colores deseados. Finalmente, damos aceptar, y podemos repetir los gráficos para ver cómo cambió. Este paso se realiza al comienzo, para que todos los gráficos se creen con la paleta de colores deseada.
+R Commander nos permite modificar la paleta de colores de nuestro análisis de datos. Dentro del menú `Gráficas`, la primer opción es `Elegir la gama de colores`. Si clickeamos allí, se abrirá una ventana que muestra la actual paleta de colores y permitirá modificarla, eligiendo los colores deseados. Finalmente, damos aceptar, y podemos repetir los gráficos para ver cómo cambió. **Este paso se realiza al comienzo**, para que todos los gráficos se creen con la paleta de colores deseada.
 
 ### Guardar los gráficos en archivo
 
 Una vez que generamos los gráficos en RCommander, necesitamos llevarlos a nuestros informes. Una forma posible se abordará en la sección RMarkdown (informes automatizados). Otra forma posible es copiando las figuras y pegándolas en nuestro informe de Documento de Libre Office o de Microsoft Word (que suelen ser el formato más habitual) o bien guardando los gráficos como imágenes y luego insertándolos en el documento.
 
-En la ventana R Graphics: Device podemos acomodar las dimensiones del visualizador para que el título entre correctamente y darle la forma que querramos (más o menos ancho, más o menos alto) al redimensionar la ventana. Para copiar y pegar el gráfico, vamos al menú Archivo > Copiar para el área de transferencia > Como un bitmap, y una vez hecho esto podremos ir a nuestro documento y simplemente pegarlo (`Ctrol + V` en la mayoría de las interfaces, o bien desde el menú `Editar`).
+En la ventana R Graphics: Device podemos acomodar las dimensiones del visualizador para que el título entre correctamente y darle la forma que querramos (más o menos ancho, más o menos alto) al redimensionar la ventana. Para copiar y pegar el gráfico, vamos al menú `Archivo > Copiar para el área de transferencia > Como un bitmap`, y una vez hecho esto podremos ir a nuestro documento y simplemente pegarlo (`Ctrol + V` en la mayoría de las interfaces, o bien desde el menú `Editar`).
 
-```{r, echo=F, fig.align='center', out.width="100%"}
+```{r, echo=F, fig.align='center', out.width="90%"}
 knitr::include_graphics("rcmdr27.png")
 ```
 
-Asimismo, para guardar la imagen vamos a Archivo > Guardar como y elegimos el formato deseado. En este caso, yo elegí un formato .png. Para los archivos .jpeg permite elegir además al calidad con la que se guardará el elemento.
+Asimismo, para guardar la imagen vamos a `Archivo > Guardar como` y elegimos el formato deseado. En este caso, yo elegí un formato .png. Para los archivos .jpeg permite elegir además al calidad con la que se guardará el elemento.
 
-```{r, echo=F, fig.align='center', out.width="100%"}
+```{r, echo=F, fig.align='center', out.width="90%"}
 knitr::include_graphics("rcmdr28.png")
 ```
 
 ## Cálculo de estadísticas descriptivas
 
-R Commander provee una forma rápida de resumir las principales características de un conjun- to de datos, indicando el mínimo, máximo, media y cuartiles para todas las variables cuantitativas y la frecuencia absoluta de cada categoría para las variables cualitativas. Esto se obtiene yendo a Estadísticos >  Resúmenes >  Conjunto de datos activo:
-
+R Commander provee una forma rápida de resumir las principales características de un conjunto de datos, indicando el mínimo, máximo, media y cuartiles para todas las variables cuantitativas y la frecuencia absoluta de cada categoría para las variables cualitativas. Esto se obtiene yendo a `Estadísticos >  Resúmenes >  Conjunto de datos activo`:
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr19.png")
@@ -308,19 +314,19 @@ knitr::include_graphics("rcmdr20.png")
 
 ### Variables cuantitativas
 
-Si se quiere calcular otras estadísticas para resumir variables cuantitativas, se debe ir a Estadísticos >  Resúmenes >  Resúmenes numéricos:
+Si se quiere calcular otras estadísticas para resumir variables cuantitativas, se debe ir a `Estadísticos > Resúmenes > Resúmenes numéricos`:
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr21.png")
 ```
 
-Se abre la ventana Resúmenes numéricos. En la pestaña Datos, seleccionar (hacer click) sobre la variable cuantitativa que deseemos resumir, por ejemplo, imputados. En la pestaña Estadísticos, seleccionar las estadísticas de interés. Desviación típica es el desvío estándar muestral y lo que figura en el cuadro Cuantiles 0, .25, .5, .75, 1 significa que nos informará el mínimo, Q1, Q2, Q3 y el máximo:
+Se abre la ventana Resúmenes numéricos. En la pestaña `Datos`, seleccionar (hacer click) sobre la variable cuantitativa que deseemos resumir, por ejemplo, *imputados*. En la pestaña `Estadísticos`, seleccionar las estadísticas de interés. Desviación típica es el desvío estándar muestral y lo que figura en el cuadro Cuantiles 0, .25, .5, .75, 1 significa que nos informará el mínimo, Q1, Q2 (mediana), Q3 y el máximo:
 
 ```{r, echo=F, fig.align='center', out.width="100%"}
 knitr::include_graphics("rcmdr22.png")
 ```
 
-Luego de hacer click en Aceptar, obtendremos las estadísticas en el sector Salida. mean es la media aritmética, sd es el desvío estándar, IQR es el rango intercuartil, cv es el coeficiente de variación, 0 % es el mínimo, 25 % es el Q1, 50 % es el Q2, 75 % es el Q3, 100 % es el máximo y n es la cantidad de observaciones.
+Luego de hacer click en Aceptar, obtendremos las estadísticas en el sector Salida. `mean` es la media aritmética, `sd` es el desvío estándar, `IQR` es el rango intercuartílico, `cv` es el coeficiente de variación, `0%` es el mínimo valor observado, `25%` es el Q1, `50%` es el Q2, `75%` es el Q3, `100%` es el valor máximo y `n` es la cantidad de observaciones.
 
 ```{r, echo=F, fig.align='center', out.width="100%"}
 knitr::include_graphics("rcmdr23.png")
@@ -328,15 +334,15 @@ knitr::include_graphics("rcmdr23.png")
 
 ### Variables cualitativas
 
-También podemos generar la distribución de frecuencias para una variable cualitativa. Esto se encuentra en Estadísticos >  Resúmenes >  Distribución de frecuencia. En la ventana Distribución de frecuencias, seleccionar la variable cualitativa que se desea resumir, por ejemplo, agres. Al hacer click en Aceptar, en el sector Salida encontraremos las frecuencias absolutas de cada categoría (Counts) y las frecuencias relativas porcentuales (percentages):
+También podemos generar la distribución de frecuencias para una variable cualitativa. Esto se encuentra en `Estadísticos >  Resúmenes >  Distribución de frecuencia`. En la ventana `Distribución de frecuencias`, seleccionar la variable cualitativa que se desea resumir, por ejemplo, *agres*. Al hacer click en Aceptar, en el sector Salida encontraremos las frecuencias absolutas de cada categoría (Counts) y las frecuencias relativas porcentuales (percentages):
 
-```{r, echo=F, fig.align='center', out.width="70%"}
+```{r, echo=F, fig.align='center', out.width="90%"}
 knitr::include_graphics("rcmdr24.png")
 ```
 
 ## Manipulación de datos y configuración de variables
 
-Cuando construimos el gráfico de barras para la variable Nivel de agresividad, las barras del gráficos quedaron "desordenadas": primero la barra del nivel Alto, después la del nivel Bajo y por último la del nivel Medio.
+Cuando construimos el gráfico de barras para la variable Nivel de agresividad (*agres*), las barras del gráficos quedaron "desordenadas": primero la barra del nivel Alto, después la del nivel Bajo y por último la del nivel Medio.
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr12.png")
@@ -348,27 +354,27 @@ knitr::include_graphics("rcmdr12.png")
 knitr::include_graphics("rcmdr29.png")
 ```
 
-Entonces, para configurar las variables tenemos que ir al menú Datos y en la opción Modificar variables del conjunto de datos activo encontraremos las opciones que necesitemos.
+Entonces, para configurar las variables tenemos que ir al menú `Datos` y en la opción `Modificar variables del conjunto de datos activo` encontraremos las opciones que necesitamos.
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr30.png")
 ```
 
-Para casos como los de la variable nivel de agresividad, variable tipo caracter para la cual necesitamos ordenar sus categorías, iremos a la opción "Reordenar niveles de factor". Para R, y en la estadística en general, las variables cualitativas son llamadas factores.
+Para casos como los de la variable nivel de agresividad, variable tipo caracter para la cual necesitamos ordenar sus categorías, iremos a la opción `Reordenar niveles de factor...`. Para R, y en la estadística en general, las variables cualitativas son llamadas factores.
 
-En la ventana emergente que se abre al clikear la opción Reordenar niveles de un factor..., tenemos que elegir cuál es la variable sobre la cual queremos trabajar (en este caso, agres). Adicionalmente, RCommander nos permite guardar la modificación que hagamos en una nueva variable que se creará de forma automática en el conjunto de datos, en este caso con el nombre agres_f. Esta opción suele ser útil cuando no se quiere modiicar los datos originales, y al hacer esto el conjunto de datos ahora tendrá dos variables que refieren a la misma característica: agres y agres_f, que se ven igual si abrimos el conjunto de datos pero se diferencian en la forma en que son analizados los datos. Caso contrario, la opción por defecto es reemplazar los datos originales. Sea cual sea la opción elegida, tenemos que indicarle a RCommander que queremos un "Factor de tipo ordenado", tildando la opción correspondiente. Al hacer click en Aceptar, se abrirá una segunda ventana que nos permitirá elegir el orden de nuestras categorías.
+En la ventana emergente que se abre al clikear la opción Reordenar niveles de un factor..., tenemos que elegir cuál es la variable sobre la cual queremos trabajar (en este caso, *agres*). Adicionalmente, R Commander nos permite guardar la modificación que hagamos en una nueva variable que se creará de forma automática en el conjunto de datos, en este caso con el nombre *agres_f*. Esta opción suele ser útil cuando no se quiere modificar los datos originales, y al hacer esto el conjunto de datos ahora tendrá dos variables que refieren a la misma característica: *agres* y *agres_f*, que se ven igual si abrimos el conjunto de datos pero se diferencian en la forma en que son analizados los datos. Caso contrario, la opción por defecto es reemplazar los datos originales. Sea cual sea la opción elegida, tenemos que indicarle a R Commander que queremos un `Factor de tipo ordenado`, tildando la opción correspondiente. Al hacer click en Aceptar, se abrirá una segunda ventana que nos permitirá elegir el orden de nuestras categorías.
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr31.png")
 ```
 
-Si ahora repetimos el análisis descriptivo gráfico (en mi caso, con la variable agres_f), las barras quedarán ordenadas como queríamos.
+Si ahora repetimos el análisis descriptivo gráfico (en este caso, con la variable *agres_f*), las barras quedarán ordenadas como queríamos.
 
 ```{r, echo=F, fig.align='center', out.width="100%"}
 knitr::include_graphics("rcmdr32.png")
 ```
 
-Un proceso distinto tenemos que seguir en el caso de la variable departamento, ya que no se trata originalmente de un campo tipo caracter sino que es un campo numérico que representa categorías. En este caso, en el menú `Datos > Modificar variables del conjunto de datos activo` pero ahora eligiendo la opción `Convertir variables numéricas en factores...`, se abrirá una ventana emergente para elegir la variable que queremos convertir en factor. Seleccionamos `dpto` y dejamos marcada la opción `Asignar nombres a los niveles`. En este caso, con fines didácticos elegimos no crear una variable nueva sino modificar la ya existente (el cambo `Nuevo nombre ...` queda con la opción por defecto). En sus trabajos, recomendamos seguir siempre el mismo criterio. Al darle aceptar nos preguntará si realmente queremos reemplazar los datos originales, le damos  `Sí`. Es importante aclarar que **esta modificación de los datos se hace sobre el archivo `Robos`, el objeto creado en la memoria de R, y no sobre el archivo `base_robos.xlsx`** del cual importamos los datos (podemos abrirlo y corroborar que no se agregó la variable `agres_f` creada en el paso anterior). Con esto nos referimos a que **R trabaja con objetos guardados en su memoria temporal**.
+Un proceso distinto tenemos que seguir en el caso de la variable departamento, ya que no se trata originalmente de un campo tipo caracter sino que es un campo numérico que representa categorías. En este caso, en el menú `Datos > Modificar variables del conjunto de datos activo` pero ahora eligiendo la opción `Convertir variables numéricas en factores...`, se abrirá una ventana emergente para elegir la variable que queremos convertir en factor. Seleccionamos *dpto* y dejamos marcada la opción `Asignar nombres a los niveles`. En este caso, con fines didácticos elegimos no crear una variable nueva sino modificar la ya existente (el campo `Nuevo nombre ...` queda con la opción por defecto). En sus actividades laborales, recomendamos seguir siempre el mismo criterio. Al darle Aceptar nos preguntará si realmente queremos reemplazar los datos originales, le damos Sí. Es importante aclarar que **esta modificación de los datos se hace sobre el archivo `Robos`, el objeto creado en la memoria de R, y no sobre el archivo `base_robos.xlsx`** del cual importamos los datos (podemos abrirlo y corroborar que no se agregó la variable *agres_f* creada en el paso anterior). Con esto nos referimos a que **R trabaja con objetos guardados en su memoria temporal**.
 
 Ahora bien, al aceptar la modificación de nuestros datos, se abre una nueva ventana donde podemos escribir las etiquetas que queremos para cada número. Entonces, en cada campo indicamos el nombre del departamento correspondiente: para el valor 1 será La Capital, para el valor 2 será Rosario, y así con todos. Finalmente, aceptamos.
 
@@ -377,15 +383,21 @@ knitr::include_graphics("rcmdr33.png")
 ```
 
 > **Ejercicio 2**
-> Preparar el conjunto de datos para un análisis descriptivo completo, recodificando las variables que sean necesarias. Una vez hecho esto, hacer el análisis descriptivo de cada variable, incluyendo tanto la parte gráfica como numérica. No olvide incluir los nombres de los ejes y un título apropiado para cada figura, y las unidades de medida correspondientes en caso de corresponder.
+>
+> Preparar el conjunto de datos para un análisis descriptivo completo, recodificando las variables que sean necesarias. 
+>
+> Una vez hecho esto, hacer el análisis descriptivo de cada variable, incluyendo tanto la parte gráfica como numérica. No olviden incluir los nombres de los ejes y un título apropiado para cada figura, y las unidades de medida en caso de corresponder.
 
 > **Ejercicio 3**
-> Sobre el análisis descriptivo realizado previamente, intercale los gráficos creados con el texto que incluya las interpretaciones correspondientes en términos del problema. Indique además qué medida de posición central es más apropiada para cada variable, y en caso de corresponder indicar también qué medida de dispersión la podría acompañar.
+>
+> Sobre el análisis descriptivo realizado previamente, intercale los gráficos creados con el texto que incluya las interpretaciones correspondientes en términos del problema. 
+>
+> Indique además qué medida de posición central es más apropiada para cada variable, y en caso de corresponder indicar también qué medida de dispersión la podría acompañar.
 
 
 ## Cerrar R Commander
 
-Como con cualquier otro programa, para cerrar R Commander debemos hacer click en la cruz que se presenta en su ventana en la esquina superior derecha. Sin embargo, R Commander nos hará algunas preguntas, empezando por si realmente queremos salir (Aceptar) y varias otras acerca de que si queremos guardar archivos con lo que estuvimos haciendo: con el archivo de instrucciones, se refiere al código que estuvimos generando a medida que fuimos trabajando (RScript); lo que refiere al fichero R Markdown lo veremos en la sección que sigue; y con el archivo de salida se refiere a un archivo de texto plano .txt que contiene todo lo que se fue generando en la ventana Salida (el código que escribió RCommander a medida que fuimos realizando el análisis y los resultados del análisis descriptivo numérico, los gráficos no podrá guardarlos dado que no pueden convertirse a texto).
+Como con cualquier otro programa, para cerrar R Commander debemos hacer click en la cruz que se presenta en su ventana en la esquina superior derecha. Sin embargo, R Commander nos hará algunas preguntas, empezando por si realmente queremos salir (Aceptar) y varias otras acerca de que si queremos guardar archivos con lo que estuvimos haciendo: con el *archivo de instrucciones*, se refiere al código que estuvimos generando a medida que fuimos trabajando (**RScript**); lo que refiere al fichero R Markdown lo veremos en la sección que sigue; y con el *archivo de salida* se refiere a un archivo de texto plano .txt que contiene todo lo que se fue generando en la ventana Salida (el código que escribió R Commander a medida que fuimos realizando el análisis y los resultados del análisis descriptivo numérico, los gráficos no podrá guardarlos dado que no pueden convertirse a texto).
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr25.png")
@@ -393,13 +405,13 @@ knitr::include_graphics("rcmdr25.png")
 
 Si bien en este apartado del documento no nos centramos en el código ejecutado, guardar las instrucciones (el RScript) puede ser muy útil si el análisis de datos que estamos haciendo es una tarea repetitiva en nuestra rutina. Guardando el código de programación que hace todo lo que estuvimos trabajando, nos permite volver a abrirlo en un futuro y poder repetir lo ya hecho. Esto puede ser particularmente útil si, por ejemplo, se trata de un análisis que se realiza de forma periódica (por ejemplo, semanalmente, quincenalmente, mensualmente) sobre una misma base de datos que se va actualizando. En este caso, y si nos interesa guardar antes este RScript, podemos ir a `Fichero > Guardar las instrucciones como...` y asignarle un nombre al archivo. Esto se guardará como un archivo con extensión `.R`: es un archivo que contiene todo el código (y solo eso, ninguno de los resultados obtenidos) y que puede abrirse desde R, RStudio o bien también desde un lector de archivos de texto plano (como el block de notas). 
 
-Si cerramos nuestra sesión de RCommander y RStudio, y otro día queremos volver a este Script, volvemos a abrir RCommander y yendo a `Fichero > Abrir archivo de instrucciones...` y allí seleccionamos el archivo en nuestra computadora, y podremos ver que en el panel de RScript, se cargará todo el código creado previamente. Para volver a ejecutar una parte del RScript, podemos seleccionar las líneas de código correspondientes y hacer click en el botón `Ejecutar`. Para ello es necesario primero analizar un poco qué parte del código corresponde a cada cosa. Por ejemplo, en este caso, selecciono las líneas que corresponden al gráfico de barras (lo noto dado que usa una función llamada `Barplot`) para la variable `agres_f`.
+Si cerramos nuestra sesión de R Commander y RStudio, y otro día queremos volver a este Script, volvemos a abrir R Commander y yendo a `Fichero > Abrir archivo de instrucciones...` y allí seleccionamos el archivo en nuestra computadora, y podremos ver que en el panel de RScript, se cargará todo el código creado previamente. Para volver a ejecutar una parte del RScript, podemos seleccionar las líneas de código correspondientes y hacer click en el botón `Ejecutar`. Para ello es necesario primero analizar un poco qué parte del código corresponde a cada cosa. Por ejemplo, en este caso, selecciono las líneas que corresponden al gráfico de barras (lo noto dado que usa una función llamada `Barplot`) para la variable `agres_f`.
 
 ```{r, echo=F, fig.align='center', out.width="70%"}
 knitr::include_graphics("rcmdr34.png")
 ```
 
-A partir del apartado **Modificando el código: paquete base** hay más nociones para poder interpretar el código de R.
+A partir del apartado **Modificando el código: paquete base** veremos más nociones para poder interpretar el código de R.
 
 ## R Markdown
 
@@ -434,6 +446,9 @@ La última línea de las mostradas, con el texto *"`r as.character(Sys.Date())`"
 
 
 # Modificando el código: paquete base
+
+Apartado en construcción...
+
 
 Hasta ahora trabajamos con el R Commander, una interfaz por menúes que nos permite de forma sencilla generar gráficos, medidas descriptivas y algunos análisis estadísticos más. Sin embargo, R Commander no permite aprovechar al máximo las opciones de edición de R. Para ello, necesitamos comenzar a conocer y amigarnos con el código de programación. En esta sección del documento, vamos a cerrar R Commander y vamos a trabajar directamente en RStudio.
 
@@ -481,3 +496,4 @@ Todo lo que aparece sombreado en gris es el código ejecutado. Los números que 
 
 # Un pasito más: ggplot
 
+Apartado en construcción...
